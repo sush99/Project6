@@ -1,0 +1,34 @@
+<h3>Orbit Report</h3>
+<table>
+   <tr class="header-row">
+      <th class="sortable">Name</th>
+      <!-- (click)="sort({{Name}}) -->
+      <th class="sortable">Type</th>
+      <th>Operational</th>
+      <th>Orbit Type</th>
+      <th>Launch Date</th>
+   </tr>
+   <tr *ngFor="let objects of satellites">
+       <th>
+        {{objects.name}}
+       </th>
+       <th *ngIf = "!objects.shouldShowWarning(); else changeColor">
+        {{objects.type}}
+       </th>
+       <ng-template #changeColor>
+          <th class = "warning">
+             {{objects.type}}
+          </th>
+
+       </ng-template>
+       <th>
+        {{objects.operational}}
+       </th>
+       <th >
+        {{objects.orbitType}}
+       </th>
+       <th>
+        {{objects.launchDate}}
+       </th>
+   </tr>
+</table>
